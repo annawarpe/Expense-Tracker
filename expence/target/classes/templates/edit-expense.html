@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Expense</title>
+    <link rel="stylesheet" th:href="@{/dashboard.css}">
+</head>
+<body class="e_body">
+
+<div class="ee">
+    <h2>✏️ Edit Expense</h2>
+
+  <form action="/expenses/update" method="post" class="center-form">
+
+        <input type="hidden" name="id" th:value="${expense.id}">
+
+        <label>Expense Name</label>
+        <input type="text" name="title" th:value="${expense.title}" required>
+
+        <label>Amount (₹)</label>
+        <input type="number" name="amount" step="0.01"
+               th:value="${expense.amount}" required>
+
+        <label>Date</label>
+        <input type="date" name="expenseDate"
+               th:value="${expense.expenseDate}" required>
+
+        <label>Category</label>
+        <select name="category">
+            <option th:selected="${expense.category=='Food & Dining'}">Food & Dining</option>
+            <option th:selected="${expense.category=='Travel'}">Travel</option>
+            <option th:selected="${expense.category=='Shopping'}">Shopping</option>
+            <option th:selected="${expense.category=='Bills'}">Bills</option>
+            <option th:selected="${expense.category=='Other'}">Other</option>
+        </select>
+
+        <button type="submit" class="add-btn">Update Expense</button>
+    </form>
+</div>
+</body>
+</html>

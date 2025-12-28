@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">
+        <div class="logo-icon">📊</div>
+        <span>Personal Expense Tracker</span>
+    </div>
+
+    <div class="user-section">
+       <div class="avatar" id="avatar">A</div>
+<span id="username"></span>
+<button class="logout-btn" onclick="logout()">Logout</button>
+
+
+    </div>
+</div>
+
+<div class="dashboard">
+
+    <!-- LEFT: ADD EXPENSE -->
+    <div class="left-panel">
+        <h2>➕ Add New Expense</h2>
+
+        <form id="expenseForm">
+            <label>Expense Name</label>
+            <input type="text" id="name" placeholder="e.g. Groceries, Rent" required>
+
+            <label>Amount (₹)</label>
+            <input type="number" id="amount" placeholder="0.00" required>
+
+            <label>Date</label>
+            <input type="date" required>
+
+            <label>Category</label>
+            <select required>
+                <option>Food & Dining</option>
+                <option>Travel</option>
+                <option>Shopping</option>
+                <option>Bills</option>
+            </select>
+
+            <button class="add-btn">+ Add Expense</button>
+        </form>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-panel">
+
+        <!-- RECENT EXPENSE -->
+        <div class="card">
+            <h2>📄 Recent Expenses</h2>
+            <div id="recent" class="expense-item">
+                <h4>No expenses yet</h4>
+                <span class="amount">₹0.00</span>
+            </div>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div class="card">
+            <h2>📊 Expense Overview</h2>
+
+            <div class="overview">
+                <div class="box total">
+                    <h1>₹<span id="total">0</span></h1>
+                    <p>Total Expenses</p>
+                </div>
+
+                <div class="box month">
+                    <h1>₹<span id="month">0</span></h1>
+                    <p>This Month</p>
+                </div>
+
+                <div class="box daily">
+                    <h1>₹<span id="daily">0</span></h1>
+                    <p>Daily Average</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+     const user = sessionStorage.getItem("loggedInUser");
+
+    // if not logged in
+    if (!user) {
+        window.location.href = "login.html";
+    }
+
+    // show username
+    document.getElementById("username").innerText = user;
+
+    // avatar letter
+    document.getElementById("avatar").innerText =
+        user.charAt(0).toUpperCase();
+
+    function logout() {
+        sessionStorage.clear();
+        window.location.href = "login.html";
+    }
+    let total = 0;
+    let count = 0;
+
+    document.getElementById("expenseForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const amount = Number(document.getElementById("amount").value);
+
+        total += amount;
+        count++;
+
+        document.getElementById("total").innerText = total.toFixed(2);
+        document.getElementById("month").innerText = total.toFixed(2);
+        document.getElementById("daily").innerText = (total / count).toFixed(2);
+
+        document.getElementById("recent").innerHTML = `
+            <h4>${name}</h4>
+            <span class="amount">₹${amount.toFixed(2)}</span>
+        `;
+
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

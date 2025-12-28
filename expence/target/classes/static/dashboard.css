@@ -1,0 +1,379 @@
+/* HEADER */
+.header {
+    background: #ffffff;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 18px;
+    margin: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: #111;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #f59f00, #2f9e44);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-btn {
+    border: 1px solid #ff2f92;
+    background: transparent;
+    color: #ff2f92;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background: #ff2f92;
+    color: white;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f5f7fb;
+}
+
+.dashboard {
+    display: flex;
+    gap: 25px;
+    padding: 25px;
+}
+.e_body {
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center;     /* vertical centering */
+  height: 100vh;           /* full viewport height */
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.center-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 500px;
+  text-align: center;
+}
+.ee {
+    width: 45%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 14px;
+}
+/* LEFT PANEL */
+.left-panel {
+    width: 35%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 14px;
+}
+
+.left-panel h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 15px 0 6px;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.add-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 14px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+    width: 65%;
+}
+
+
+
+
+
+
+.expense-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+    gap: 10px; /* spacing between columns */
+}
+
+.expense-row.header-row {
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 8px;
+}
+
+.expense-row .col {
+    white-space: nowrap;       /* Prevent wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expense-row .title    { flex: 2; }
+.expense-row .date     { flex: 2; }
+.expense-row .category { flex: 3; }
+.expense-row .amount   { flex: 2; font-weight: bold; color: #ff2f7d; }
+.expense-row .actions  { flex: 1; display: flex; gap: 5px; justify-content: flex-end; }
+
+.expense-row .actions a {
+    text-decoration: none;
+}
+
+.expense-row .actions a:hover {
+    color: red; /* delete or edit hover color */
+}
+
+
+
+/* RECENT EXPENSE */
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.expense-item h4 {
+    margin: 0;
+}
+
+
+/* OVERVIEW */
+.overview {
+    display: flex;
+    gap: 20px;
+}
+
+.box {
+    flex: 1;
+    color: white;
+    padding: 30px;
+    border-radius: 16px;
+}
+
+.total {
+    background: linear-gradient(135deg, #f59f00, #2f9e44);
+}
+
+.month {
+    background: linear-gradient(135deg, #ff922b, #f76707);
+}
+
+.daily {
+    background: linear-gradient(135deg, #2f9e44, #20c997);
+}
+
+
+.box h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.box p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+
+
+/* RECENT EXPENSES */
+.expense-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+    margin-bottom: 15px;
+}
+
+.expense-left h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.expense-left p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.expense-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff2f7d;
+}
+
+.icon-btn {
+    text-decoration: none;
+    background: #f4f6fb;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+.simple-expense h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.simple-expense p {
+    margin: 4px 0;
+    color: #555;
+}
+
+.expense-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.amount {
+    font-weight: bold;
+    color: #ff2f7d;
+}
+
+.edit-btn,
+.delete-btn {
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    color: #007bff;
+}
+
+.delete-btn:hover {
+    color: red;
+}
+
+.simple-expense hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 15px 0;
+}
+.expense-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+.expense-row:last-child {
+    border-bottom: none;
+}
+
+.expense-row .col {
+    .expense-row .title    { width: 20%; font-weight: 600; }
+.expense-row .date     { width: 20%; }
+.expense-row .category { width: 25%; }
+.expense-row .amount   { width: 15%; font-weight: bold; color: #ff2f7d; }
+.expense-row .actions  { width: 20%; }
+}
+
+.expense-row .title {
+    font-weight: 600;
+}
+
+.expense-row .amount {
+    font-weight: bold;
+    color: #ff2f7d;
+}
+
+.expense-row .actions a {
+    margin-right: 10px;
+    text-decoration: none;
+}
+.expense-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;          /* ⭐ FORCE ONE ROW */
+}
+
+.expense-row .col {
+    white-space: nowrap;        /* ⭐ PREVENT LINE BREAKS */
+}
+
+.expense-row .title,
+.expense-row .category {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

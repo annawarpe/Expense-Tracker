@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Expense</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Expense</h2>
+
+    <form id="expenseForm">
+    <label>Expense Name</label>
+    <input type="text" id="title" placeholder="Groceries" required>
+
+    <label>Amount (₹)</label>
+    <input type="number" id="amount" placeholder="0.00" required>
+
+    <label>Date</label>
+    <input type="date" id="expense_date" required>
+
+    <label>Category</label>
+    <select id="category" required>
+        <option>Food & Dining</option>
+        <option>Travel</option>
+        <option>Shopping</option>
+        <option>Bills</option>
+    </select>
+
+    <button class="add-btn">+ Add Expense</button>
+</form>
+
+<script>
+document.getElementById("expenseForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const expense = {
+        title: document.getElementById("title").value,
+        amount: Number(document.getElementById("amount").value),
+        category: document.getElementById("category").value,
+        expenseDate: document.getElementById("expense_date").value
+    };
+
+    const response = await fetch("http://localhost:8080/api/expenses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(expense)
+    });
+
+    if(response.ok) {
+        alert("Expense saved!");
+        this.reset();
+    } else {
+        alert("Error saving expense");
+    }
+});
+</script>
+
+</body>
+</html>

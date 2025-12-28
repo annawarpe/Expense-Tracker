@@ -1,0 +1,8 @@
+com\example\auth\controller\RegisterController.class
+com\example\auth\repository\ExpenseRepository.class
+com\example\auth\entity\User.class
+com\example\auth\controller\LoginController.class
+com\example\auth\entity\Expense.class
+com\example\auth\controller\ExpenseController.class
+com\example\auth\AuthApplication.class
+com\example\auth\repository\UserRepository.class

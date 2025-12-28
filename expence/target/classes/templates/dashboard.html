@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Expense Dashboard</title>
+    <link rel="stylesheet" th:href="@{/dashboard.css}" href="/dashboard.css">
+</head>
+<body>
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">
+        <div class="logo-icon">📊</div>
+        <span>Personal Expense Tracker</span>
+    </div>
+
+    <div class="user-section">
+       <div class="avatar" id="avatar">A</div>
+<span id="username"></span>
+<a class="logout-btn" th:href="@{/logout}">Logout</a>
+
+<span th:text="${session.loggedInUser}"></span>
+
+
+    </div>
+</div>
+
+<div class="dashboard">
+
+    <!-- LEFT: ADD EXPENSE -->
+    <div class="left-panel">
+        <h2>➕ Add New Expense</h2>
+
+       <form action="/expenses/add" method="post">
+    <label>Expense Name</label>
+    <input type="text" name="title" placeholder="Groceries" required>
+
+    <label>Amount (₹)</label>
+    <input type="number" name="amount" placeholder="0.00" required step="0.01">
+
+    <label>Date</label>
+    <input type="date" name="expenseDate" required>
+
+    <label>Category</label>
+    <select name="category" required>
+        <option>Food & Dining</option>
+        <option>Travel</option>
+        <option>Shopping</option>
+        <option>Bills</option>
+        <option>Rent</option>
+        <option>Other</option>
+    </select>
+
+    <button type="submit" class="add-btn">+ Add Expense</button>
+</form>
+
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-panel">
+
+        <!-- RECENT EXPENSE -->
+        <div class="card">
+            <h2>📄 Recent Expenses</h2>
+            <div th:if="${#lists.isEmpty(recentExpenses)}">
+    <h4>No expenses yet</h4>
+</div>
+<div class="card">
+    <div th:each="exp : ${recentExpenses}" class="expense-row">
+
+        <div class="col title" th:text="${exp.title}">abc</div>
+
+        <div class="col date"
+             th:text="${#temporals.format(exp.expenseDate,'dd MMM yyyy')}">
+            25 Dec 2025
+        </div>
+
+        <div class="col category" th:text="${exp.category}">
+            Food & Dining
+        </div>
+
+        <div class="col amount">
+            ₹<span th:text="${#numbers.formatDecimal(exp.amount,1,2)}">0.00</span>
+        </div>
+
+        <div class="col actions">
+            <a th:href="@{/expenses/edit/{id}(id=${exp.id})}">✏️</a>
+            <a th:href="@{/expenses/delete/{id}(id=${exp.id})}"
+               onclick="return confirm('Delete this expense?')">🗑️</a>
+        </div>
+
+    </div>
+</div>
+<div class="card">
+    <h2>📊 Expense Overview</h2>
+
+    <div class="overview">
+        <div class="box total">
+            <h1>₹<span th:text="${#numbers.formatDecimal(totalExpense, 1, 2)}">0.00</span></h1>
+            <p>Total Expenses</p>
+        </div>
+
+        <div class="box month">
+            <h1>₹<span th:text="${#numbers.formatDecimal(monthlyExpense, 1, 2)}">0.00</span></h1>
+            <p>This Month</p>
+        </div>
+
+        <div class="box daily">
+            <h1>₹<span>0.00</span></h1>
+            <p>Daily Average</p>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
